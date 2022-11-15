@@ -15,34 +15,28 @@ void load(t_xpm *xpm, t_map *mapa)
 	
 void drawmap(t_xpm *xpm, t_map *mapa)
 {	
-	int i;
-	int j;
+	static int i;
+	static int j;
 
-	i = 0;
-	j = 0;
 	while (i < mapa->height -1)
 	{
 	 	while(j < mapa->width)
 	 	{
-	 		if (mapa->mapa[i][j] == '1')
+			// checkmap(xpm, mapa, i, j);
+	 		if (mapa->mapa[i][j] == '1' )
 				mlx_put_image_to_window(xpm->mlx, xpm->mlx_win, xpm->pared, SZEIMG * j, SZEIMG * i);
 			if (mapa->mapa[i][j] == '0')
 	 			mlx_put_image_to_window(xpm->mlx, xpm->mlx_win, xpm->suelo, SZEIMG * j, SZEIMG * i);
 			if (mapa->mapa[i][j] == 'P')
-				{
-					mlx_put_image_to_window(xpm->mlx, xpm->mlx_win, xpm->suelo, SZEIMG * j, SZEIMG * i);
 	 				mlx_put_image_to_window(xpm->mlx, xpm->mlx_win, xpm->hobbit, SZEIMG * j, SZEIMG * i);
-					mapa->player++;
-				}
 			if (mapa->mapa[i][j] == 'E')
 	 			mlx_put_image_to_window(xpm->mlx, xpm->mlx_win, xpm->puerta, SZEIMG * j, SZEIMG * i);
-				mapa->exit++;
 			if (mapa->mapa[i][j] == 'C')
 	 			mlx_put_image_to_window(xpm->mlx, xpm->mlx_win, xpm->luz, SZEIMG * j, SZEIMG * i);
-				mapa->things++;
 	 		j++;
 	 	}
 	 	j = 0;
 	 	i++;
 	}
+	i = 0;
 }

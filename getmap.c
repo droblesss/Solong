@@ -16,9 +16,14 @@ t_map getmap(char *file, t_map *mapa)
 		archivo = ft_strjoin(archivo, linea);
 		linea = get_next_line(fd);
 		// if(ft_strlen(linea) != mapa->width)
-		// 	break;
+		//  	break;
 		mapa->height++;
 	}
+
 	mapa->mapa = ft_split(archivo, '\n');
+	*mapa = *insidecheck(mapa);
+	printf("Player i -->%i", mapa->s_player.y);
+	printf("Player i -->%i", mapa->s_player.x);
+	// mapa->mapa[mapa->height - 1];
 	return(*mapa);
 }

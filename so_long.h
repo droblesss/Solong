@@ -10,6 +10,7 @@
 # include <mlx.h>
 # include <math.h>
 # include "Libft/libft.h"
+
 # define BUFFER_SIZE 42
 
 // GNL //
@@ -26,10 +27,6 @@ char	*ft_strjjoin(char	*s1, char	*s2);
 
 typedef struct s_player
 {
-	int score;
-	int lives;
-	char *color;
-	char *name;
 	int x;
 	int y;
 	int movimientos;
@@ -55,6 +52,7 @@ typedef struct s_map
 	int player;
 	int exit;
 	t_xpm s_xpm;
+	t_player s_player;
 	
 } t_map;
 
@@ -74,11 +72,31 @@ enum {
 	MAXHEIGHT = 2880
 };
 
+/// KEYS
+
+# define DESTROY 	17
+# define ESC		53
+# define UP			13
+# define LEFT		0
+# define DOWN		1
+# define RIGHT		2
+
+void pressup(t_map *mapa);
+void pressdown(t_map *mapa);
+void pressright(t_map *mapa);
+void pressleft(t_map *mapa);
+
+
+
 //Functions
 
 t_map getmap(char *file, t_map *mapa);
 void load(t_xpm *xpm, t_map *map);
 void drawmap(t_xpm *xpm,t_map *mapa);
-void checkmap(t_map *mapa);
+void checkmap(t_xpm *xpm, t_map *mapa, int i, int j);
+t_map	*insidecheck(t_map *mapa);
+t_map	struct_init(t_map *mapa);
+int	key_detect(int keycode, t_map *mapa);
+
 
 #endif
