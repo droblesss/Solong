@@ -91,8 +91,8 @@ void pressleft(t_map *mapa);
 //Functions
 
 t_map getmap(char *file, t_map *mapa);
-void load(t_xpm *xpm, t_map *map);
-void drawmap(t_xpm *xpm,t_map *mapa);
+void load(t_map *map);
+void drawmap(t_map *mapa);
 void checkmap(t_xpm *xpm, t_map *mapa, int i, int j);
 t_map	*insidecheck(t_map *mapa);
 t_map	struct_init(t_map *mapa);

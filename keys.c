@@ -3,6 +3,7 @@
 int	key_detect(int keycode, t_map *mapa)
 {
 	int i = 0;
+	printf("\033c\n");
 	if (keycode == UP)
 		pressup(mapa);
 	else if (keycode == RIGHT)
@@ -16,6 +17,7 @@ int	key_detect(int keycode, t_map *mapa)
 			printf("%s\n", mapa->mapa[i]);
 			i++;
 		}
+	// drawmap(mapa);
 	return(0);
 }
 
