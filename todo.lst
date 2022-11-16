@@ -1,4 +1,4 @@
-Abrir la puerta cuando se recojan los coleccionables
 Cerrar el proceso con escape
 Imprimir mensajes específicos para cada error
 Incluir el ft_printf para poder hacer esas impresiones
+Printar los movimentos (¿hook?)

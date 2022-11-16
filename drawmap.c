@@ -4,7 +4,7 @@ void	load(t_map *mapa)
 {
 	int	a;
 	int	b;
-
+	
 	mapa->s_xpm.mlx_win = mlx_new_window(mapa->s_xpm.mlx,
 			(mapa->width - 1) * SZEIMG, (mapa->height - 1) * SZEIMG, "Juego");
 	mapa->s_xpm.pared = mlx_xpm_file_to_image(mapa->s_xpm.mlx,
@@ -17,6 +17,8 @@ void	load(t_map *mapa)
 			"imgs/hobbit.xpm", &a, &b);
 	mapa->s_xpm.suelo = mlx_xpm_file_to_image(mapa->s_xpm.mlx,
 			"imgs/floor.xpm", &a, &b);
+	mapa->s_xpm.open_door = mlx_xpm_file_to_image(mapa->s_xpm.mlx,
+			"imgs/opendoor.xpm", &a, &b);
 }
 
 int	drawmap(t_map *mapa)
@@ -54,8 +56,14 @@ void	drawassitant(t_map *mapa, int i, int j)
 			mapa->s_xpm.hobbit, SZEIMG * j, SZEIMG * i);
 	}
 	if (mapa->mapa[i][j] == 'E')
-		mlx_put_image_to_window(mapa->s_xpm.mlx, mapa->s_xpm.mlx_win,
+		{
+			mlx_put_image_to_window(mapa->s_xpm.mlx, mapa->s_xpm.mlx_win,
 			mapa->s_xpm.puerta, SZEIMG * j, SZEIMG * i);
+			if (mapa->things == 0)
+				mlx_put_image_to_window(mapa->s_xpm.mlx, mapa->s_xpm.mlx_win,
+					mapa->s_xpm.open_door, SZEIMG * j, SZEIMG * i);
+		}
+
 	if (mapa->mapa[i][j] == 'C')
 		mlx_put_image_to_window(mapa->s_xpm.mlx, mapa->s_xpm.mlx_win,
 			mapa->s_xpm.luz, SZEIMG * j, SZEIMG * i);

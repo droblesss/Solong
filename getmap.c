@@ -21,5 +21,5 @@ t_map getmap(char *file, t_map *mapa)
 	*mapa = *lencheck(mapa);
 	*mapa = *insidecheck(mapa);
 	*mapa = *cornercheck(mapa);
-	return(*mapa);
+	return (*mapa);
 }

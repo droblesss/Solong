@@ -10,6 +10,9 @@
 # include <mlx.h>
 # include <math.h>
 # include "Libft/libft.h"
+# include <stdarg.h>
+# include "Ft_Prinf/libftprintf.h"
+
 
 # define BUFFER_SIZE 42
 
@@ -41,6 +44,7 @@ typedef struct s_xpm
 	void *luz;
 	void *hobbit;
 	void *suelo;
+	void *open_door;
 } t_xpm;
 
 typedef struct s_map
@@ -101,5 +105,6 @@ void	drawassitant(t_map *mapa, int i, int j);
 t_map *cornercheck(t_map *mapa);
 t_map	*lencheck(t_map *mapa);
 int	bercheck(char *nombre);
+int steps(t_map *mapa);
 
 #endif

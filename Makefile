@@ -6,7 +6,7 @@
 #    By: drobles <drobles@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 11:56:59 by drobles           #+#    #+#              #
-#    Updated: 2022/11/16 13:43:27 by drobles          ###   ########.fr        #
+#    Updated: 2022/11/16 18:28:38 by drobles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,11 @@ OBJS = $(SRCS:.c=.o)
 
 LIBMLX = mlx/
 LIBFT = Libft/
+PRINTF = Ft_Prinf/
 HEADERS = 
 LIBFTA = Libft/libft.a
 MINILIB = mlx/libmlx.a
+PRINTFPATH= Ft_Prinf/libftprintf.a
 
 %.o: %.c
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
@@ -31,12 +33,14 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -C $(LIBMLX)
 	@$(MAKE) -C $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFTA) $(MINILIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -L. -o $(NAME)
+	@$(MAKE) -C $(PRINTF)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTA) $(MINILIB) $(PRINTFPATH) -Lmlx -lmlx -framework OpenGL -framework AppKit -L. -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
 	@$(MAKE) -C $(LIBMLX) clean
 	@$(MAKE) -C $(LIBFT) clean
+	@$(MAKE) -C $(PRINTF) clean
 
 fclean: clean
 	rm -f $(NAME)
