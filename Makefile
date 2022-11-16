@@ -6,7 +6,7 @@
 #    By: drobles <drobles@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 11:56:59 by drobles           #+#    #+#              #
-#    Updated: 2022/11/15 16:11:58 by drobles          ###   ########.fr        #
+#    Updated: 2022/11/16 13:43:27 by drobles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,5 +40,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-
+norme:
+	@norminette
 re: fclean all

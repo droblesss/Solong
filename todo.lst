@@ -1,2 +1,4 @@
-tengo que rellenar el mapa
-dependiendo del contenido del mapa imprimir una cosa  o otra
+Abrir la puerta cuando se recojan los coleccionables
+Cerrar el proceso con escape
+Imprimir mensajes específicos para cada error
+Incluir el ft_printf para poder hacer esas impresiones

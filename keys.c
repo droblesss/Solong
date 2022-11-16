@@ -2,7 +2,7 @@
 
 int	key_detect(int keycode, t_map *mapa)
 {
-	int i = 0;
+	// int i = 0;
 	printf("\033c\n");
 	if (keycode == UP)
 		pressup(mapa);
@@ -12,11 +12,11 @@ int	key_detect(int keycode, t_map *mapa)
 		pressleft(mapa);
 	else if (keycode == DOWN)
 		pressdown(mapa);
-	while(mapa->mapa[i])
-		{
-			printf("%s\n", mapa->mapa[i]);
-			i++;
-		}
+	// while(mapa->mapa[i])
+	// 	{
+	// 		printf("%s\n", mapa->mapa[i]);
+	// 		i++;
+	// 	}
 	// drawmap(mapa);
 	return(0);
 }

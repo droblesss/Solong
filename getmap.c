@@ -4,10 +4,10 @@ t_map getmap(char *file, t_map *mapa)
 {
 	char *linea;
 	char *archivo;
+	int fd;
 
-	mapa->height = 0;
 	archivo = "";
- 	int fd = open(file, O_RDONLY);
+ 	fd = open(file, O_RDONLY);
 	linea = get_next_line(fd);
 	mapa->width = ft_strlen(linea);
 	mapa->height++;
@@ -15,15 +15,11 @@ t_map getmap(char *file, t_map *mapa)
 	{
 		archivo = ft_strjoin(archivo, linea);
 		linea = get_next_line(fd);
-		// if(ft_strlen(linea) != mapa->width)
-		//  	break;
 		mapa->height++;
 	}
-
 	mapa->mapa = ft_split(archivo, '\n');
+	*mapa = *lencheck(mapa);
 	*mapa = *insidecheck(mapa);
-	printf("Player i -->%i", mapa->s_player.y);
-	printf("Player i -->%i", mapa->s_player.x);
-	// mapa->mapa[mapa->height - 1];
+	*mapa = *cornercheck(mapa);
 	return(*mapa);
 }

@@ -92,11 +92,14 @@ void pressleft(t_map *mapa);
 
 t_map getmap(char *file, t_map *mapa);
 void load(t_map *map);
-void drawmap(t_map *mapa);
+int drawmap(t_map *mapa);
 void checkmap(t_xpm *xpm, t_map *mapa, int i, int j);
 t_map	*insidecheck(t_map *mapa);
 t_map	struct_init(t_map *mapa);
 int	key_detect(int keycode, t_map *mapa);
-
+void	drawassitant(t_map *mapa, int i, int j);
+t_map *cornercheck(t_map *mapa);
+t_map	*lencheck(t_map *mapa);
+int	bercheck(char *nombre);
 
 #endif
