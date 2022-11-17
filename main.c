@@ -6,11 +6,19 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 11:53:53 by drobles           #+#    #+#             */
-/*   Updated: 2022/11/16 16:41:35 by drobles          ###   ########.fr       */
+/*   Updated: 2022/11/17 12:59:04 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// int	endwindow(t_map mapa)
+// {
+// 	mlx_destroy_window(mapa.s_xpm.mlx, mapa.s_xpm.mlx_win);
+// 	exit(EXIT_FAILURE);
+// 	return (0);
+// }
+
 
 int	main(int argc, char **argv)
 {
@@ -20,10 +28,11 @@ int	main(int argc, char **argv)
 		return (0);
 	bercheck(argv[1]);
 	mapa.s_xpm.mlx = mlx_init();
-	(void)argc;
-	mapa = getmap(argv[1], &mapa);
+	getmap(argv[1], &mapa);
+	// system("leaks so_long");
 	load(&mapa);
 	mlx_loop_hook(mapa.s_xpm.mlx, drawmap, &mapa);
+	// mlx_hook(mapa.s_xpm.mlx, DESTROY, 0L, endwindow, &mapa);
 	mlx_key_hook(mapa.s_xpm.mlx_win, key_detect, &mapa);
 	mlx_loop(mapa.s_xpm.mlx);
 	return (0);

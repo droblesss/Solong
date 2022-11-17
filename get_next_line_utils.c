@@ -6,7 +6,7 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 11:10:26 by drobles           #+#    #+#             */
-/*   Updated: 2022/11/02 11:25:29 by drobles          ###   ########.fr       */
+/*   Updated: 2022/11/17 12:33:12 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,6 @@ char	*ft_susbstr(char *s, unsigned int start, size_t len)
 	}
 	sub[j] = '\0';
 	return (sub);
-}
-
-int	ft_strlen(const char *str)
-{
-	int	c;
-
-	c = 0;
-	while (*str != '\0')
-	{
-		str++;
-		c++;
-	}
-	return (c);
 }
 
 char	*ft_strdup(const char	*s1)

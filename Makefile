@@ -6,15 +6,15 @@
 #    By: drobles <drobles@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 11:56:59 by drobles           #+#    #+#              #
-#    Updated: 2022/11/16 18:28:38 by drobles          ###   ########.fr        #
+#    Updated: 2022/11/17 13:15:47 by drobles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = gcc
-CFLAGS = -I. -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -I. -Wall -Wextra -Werror #-g3 -fsanitize=address
 
-SRCS = get_next_line.c get_next_line_utils.c getmap.c main.c drawmap.c checkmap.c keys.c
+SRCS = get_next_line.c get_next_line_utils.c getmap.c main.c drawmap.c checkmap.c keys.c error.c
 OBJS = $(SRCS:.c=.o)
 
 LIBMLX = mlx/
@@ -38,9 +38,9 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	@$(MAKE) -C $(LIBMLX) clean
-	@$(MAKE) -C $(LIBFT) clean
-	@$(MAKE) -C $(PRINTF) clean
+	@$(MAKE) -C clean $(LIBMLX)
+	@$(MAKE) -C clean $(LIBFT)
+	@$(MAKE) -C clean $(PRINTF)
 
 fclean: clean
 	rm -f $(NAME)
