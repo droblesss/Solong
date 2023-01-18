@@ -6,7 +6,7 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:49:41 by drobles           #+#    #+#             */
-/*   Updated: 2022/11/17 12:50:29 by drobles          ###   ########.fr       */
+/*   Updated: 2023/01/18 18:16:02 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_xpm
 typedef struct s_map
 {
 	char **mapa;
+	char **copia;
 	int height;
 	int width;
 	int things;
@@ -117,5 +118,7 @@ int		bercheck(char *nombre);
 int 	steps(t_map *mapa);
 int 	error(char c);
 int		win(char c);
+void 	checkitem(t_map *copia);
+void	extrachecker(t_map *mapa);
 
 #endif

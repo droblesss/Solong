@@ -6,7 +6,7 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:49:29 by drobles           #+#    #+#             */
-/*   Updated: 2022/11/17 12:49:30 by drobles          ###   ########.fr       */
+/*   Updated: 2023/01/18 18:39:30 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void getmap(char *file, t_map *mapa)
 	}
 	free(linea);
 	mapa->mapa = ft_split(archivo, '\n');
+	mapa->copia = ft_split(archivo, '\n');
 	mapa = lencheck(mapa);
 	mapa = insidecheck(mapa);
 	mapa = cornercheck(mapa);
+	extrachecker(mapa);
 	free(archivo);
 }

@@ -6,7 +6,7 @@
 #    By: drobles <drobles@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 11:56:59 by drobles           #+#    #+#              #
-#    Updated: 2022/11/17 13:15:47 by drobles          ###   ########.fr        #
+#    Updated: 2023/01/18 17:49:37 by drobles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ NAME = so_long
 CC = gcc
 CFLAGS = -I. -Wall -Wextra -Werror #-g3 -fsanitize=address
 
-SRCS = get_next_line.c get_next_line_utils.c getmap.c main.c drawmap.c checkmap.c keys.c error.c
+SRCS = get_next_line.c get_next_line_utils.c getmap.c main.c drawmap.c checkmap.c keys.c error.c checkitem.c
 OBJS = $(SRCS:.c=.o)
 
 LIBMLX = mlx/
 LIBFT = Libft/
 PRINTF = Ft_Prinf/
-HEADERS = 
+#HEADERS = 
 LIBFTA = Libft/libft.a
 MINILIB = mlx/libmlx.a
 PRINTFPATH= Ft_Prinf/libftprintf.a
@@ -38,12 +38,15 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	@$(MAKE) -C clean $(LIBMLX)
-	@$(MAKE) -C clean $(LIBFT)
-	@$(MAKE) -C clean $(PRINTF)
+	@$(MAKE) clean -C $(LIBMLX)
+	@$(MAKE) clean -C $(LIBFT)
+	@$(MAKE) clean -C $(PRINTF)
 
 fclean: clean
 	rm -f $(NAME)
+	rm $(LIBFTA)
+	rm $(PRINTFPATH)
+
 norme:
 	@norminette
 re: fclean all

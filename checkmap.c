@@ -6,7 +6,7 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:49:15 by drobles           #+#    #+#             */
-/*   Updated: 2022/11/17 13:10:21 by drobles          ###   ########.fr       */
+/*   Updated: 2023/01/18 17:48:59 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,55 @@
 
 t_map	*insidecheck(t_map *mapa)
 {
-	static int i;
-	static int j;
+	static int	i;
+	static int	j;
 
 	while (i < mapa->height - 1)
 	{
-	 	while(j < mapa->width)
-	 	{
-		if (mapa->mapa[i][j] == 'P')
+		while (j < mapa->width)
 		{
-			mapa->player++;
-			mapa->s_player.y = i;
-			mapa->s_player.x = j;
-		}
-		else if (mapa->mapa[i][j] == 'E')
+			if (mapa->mapa[i][j] == 'P')
+			{
+				mapa->player++;
+				mapa->s_player.y = i;
+				mapa->s_player.x = j;
+			}	
+			else if (mapa->mapa[i][j] == 'E')
 			mapa->exit++;
-		else if (mapa->mapa[i][j] == 'C')
+			else if (mapa->mapa[i][j] == 'C')
 			mapa->things++;
-		else if (mapa->mapa[i][j] != '1' && mapa->mapa[i][j] != '0'
-			&& mapa->mapa[i][j] != '\0')
-			error('I');
 		j++;
 		}
 	j = 0;
 	i++;
 	}
 	i = 0;
-	if (mapa->player != 1 || mapa->exit != 1 || mapa->things < 1)
-		exit(EXIT_FAILURE);
 	return (mapa);
 }
 
-t_map *cornercheck(t_map *mapa)
+t_map	*cornercheck(t_map *mapa)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-while (i < mapa->height - 1)
-{
-	j = 0;
-	while (j < mapa->width - 1)
+	while (i < mapa->height - 1)
 	{
-		if (mapa->mapa[0][j] != '1')
-			error('C');
-		if (mapa->mapa[mapa->height - 2][j] != '1')
-			error('C');
-		if (mapa->mapa[i][0] != '1')
-			error('C');
-		if (mapa->mapa[i][mapa->width - 2] != '1')
-			error('C');
-		j++;
+		j = 0;
+		while (j < mapa->width - 1)
+		{
+			if (mapa->mapa[0][j] != '1')
+				error('C');
+			if (mapa->mapa[mapa->height - 2][j] != '1')
+				error('C');
+			if (mapa->mapa[i][0] != '1')
+				error('C');
+			if (mapa->mapa[i][mapa->width - 2] != '1')
+				error('C');
+			j++;
+		}
+		i++;
 	}
-	i++;
-}
 	return (mapa);
 }
 
@@ -85,8 +80,8 @@ t_map	struct_init(t_map *mapa)
 
 t_map	*lencheck(t_map *mapa)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < mapa->height - 1)
@@ -101,13 +96,13 @@ t_map	*lencheck(t_map *mapa)
 	return (mapa);
 }
 
-int bercheck(char *nombre)
+int	bercheck(char *nombre)
 {	
-	int lon;
-	
+	int	lon;
+
 	lon = ft_strlen(nombre);
-	if ((nombre[lon - 1] != 'r') || (nombre[lon - 2] != 'e') ||
-			(nombre[lon - 3] != 'b') || (nombre[lon - 4] != '.'))
+	if ((nombre[lon - 1] != 'r') || (nombre[lon - 2] != 'e')
+		|| (nombre[lon - 3] != 'b') || (nombre[lon - 4] != '.'))
 		error('N');
 	return (0);
 }
