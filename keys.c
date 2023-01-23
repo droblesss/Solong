@@ -6,7 +6,7 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:49:33 by drobles           #+#    #+#             */
-/*   Updated: 2022/11/17 13:01:06 by drobles          ###   ########.fr       */
+/*   Updated: 2023/01/23 20:18:05 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	key_detect(int keycode, t_map *mapa)
 {
-	char *step;
-	
+	char	*step;
+
 	ft_printf("\033c\n");
 	if (keycode == UP)
 		pressup(mapa);
@@ -26,11 +26,11 @@ int	key_detect(int keycode, t_map *mapa)
 	else if (keycode == DOWN)
 		pressdown(mapa);
 	else if (keycode == ESC)
-		{
-			mlx_destroy_window(mapa->s_xpm.mlx, mapa->s_xpm.mlx_win);
-			exit(EXIT_FAILURE);
-		}
-	step = ft_itoa(mapa->s_player.movimientos); //Se Podría Meter en una función a parte, seguramente haga falta para imprimir por pantalla//
+	{
+		mlx_destroy_window(mapa->s_xpm.mlx, mapa->s_xpm.mlx_win);
+		exit(EXIT_FAILURE);
+	}
+	step = ft_itoa(mapa->s_player.movimientos);
 	ft_printf("%s\n", step);
 	free(step);
 	return (0);

@@ -6,19 +6,19 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:49:29 by drobles           #+#    #+#             */
-/*   Updated: 2023/01/18 18:39:30 by drobles          ###   ########.fr       */
+/*   Updated: 2023/01/23 20:17:07 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void getmap(char *file, t_map *mapa)
+void	getmap(char *file, t_map *mapa)
 {
-	char *linea;
-	char *archivo;
-	int fd;
+	char	*linea;
+	char	*archivo;
+	int		fd;
 
- 	fd = open(file, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	linea = get_next_line(fd);
 	mapa->width = ft_strlen(linea);
 	archivo = malloc(mapa->width);
@@ -37,5 +37,6 @@ void getmap(char *file, t_map *mapa)
 	mapa = insidecheck(mapa);
 	mapa = cornercheck(mapa);
 	extrachecker(mapa);
+	ultimatecheck(mapa);
 	free(archivo);
 }

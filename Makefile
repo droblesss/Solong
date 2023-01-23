@@ -6,13 +6,13 @@
 #    By: drobles <drobles@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 11:56:59 by drobles           #+#    #+#              #
-#    Updated: 2023/01/18 17:49:37 by drobles          ###   ########.fr        #
+#    Updated: 2023/01/23 20:08:22 by drobles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = gcc
-CFLAGS = -I. -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -I. -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 SRCS = get_next_line.c get_next_line_utils.c getmap.c main.c drawmap.c checkmap.c keys.c error.c checkitem.c
 OBJS = $(SRCS:.c=.o)

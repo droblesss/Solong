@@ -6,39 +6,65 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:36:42 by drobles           #+#    #+#             */
-/*   Updated: 2023/01/18 18:47:06 by drobles          ###   ########.fr       */
+/*   Updated: 2023/01/23 19:57:02 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void checkitem(t_map *mapa)
+void	checkitem(t_map *mapa, int y, int x)
 {
-	int i;
-	int j;
-	
+	mapa->copia[y][x] = 'P';
+	if (mapa->copia[y][x + 1] == '0' || mapa->copia[y][x + 1] == 'E'
+		|| mapa->copia[y][x + 1] == 'C')
+		checkitem (mapa, y, x + 1);
+	if (mapa->copia[y][x - 1] == '0' || mapa->copia[y][x - 1] == 'E'
+		|| mapa->copia[y][x - 1] == 'C')
+		checkitem (mapa, y, x - 1);
+	if (mapa->copia[y + 1] && (mapa->copia[y + 1][x] == '0'
+		|| mapa->copia[y + 1][x] == 'E' || mapa->copia[y + 1][x] == 'C'))
+		checkitem (mapa, y + 1, x);
+	if (mapa->copia[y - 1][x] == '0' || mapa->copia[y - 1][x] == 'E'
+		|| mapa->copia[y - 1][x] == 'C')
+		checkitem (mapa, y - 1, x);
+}
+
+void	posfinder(int *x, int *y, t_map *mapa)
+{
+	*y = mapa->s_player.y;
+	*x = mapa->s_player.x;
+}
+
+void	pathcheck(t_map *mapa)
+{
+	int	i;
+	int	j;
+
 	i = 0;
+	j = 0;
 	while (i < mapa->height - 1)
 	{
 		j = 0;
 		while (j < mapa->width)
 		{
-			if (mapa->copia[i][j] == 'P')
-			{
-				if((mapa->copia[i][j + 1]) == '0' ||(mapa->copia[i][j + 1] == 'E')
-					||(mapa->copia[i][j + 1] == 'C'))
-					mapa->copia[i][j + 1] = 'P';
-				if((mapa->copia[i][j - 1]) == '0' ||(mapa->copia[i][j - 1] == 'E')
-					||(mapa->copia[i][j - 1] == 'C'))
-					mapa->copia[i][j - 1] = 'P';
-			}
-		j++;
+			if (mapa->copia[i][j] == 'E' || mapa->copia[i][j] == 'C')
+				error('P');
+			j++;
 		}
 		i++;
-	}
-	ft_printf("%s", mapa->copia[1]);
+	}	
 }
-	
+
+void	ultimatecheck(t_map *mapa)
+{
+	int	x;
+	int	y;
+
+	posfinder(&x, &y, mapa);
+	checkitem(mapa, y, x);
+	pathcheck(mapa);
+}
+
 void	extrachecker(t_map *mapa)
 {
 	static int	i;

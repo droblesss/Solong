@@ -6,7 +6,7 @@
 /*   By: drobles <drobles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 12:49:41 by drobles           #+#    #+#             */
-/*   Updated: 2023/01/18 18:16:02 by drobles          ###   ########.fr       */
+/*   Updated: 2023/01/23 18:58:26 by drobles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,11 @@ int		bercheck(char *nombre);
 int 	steps(t_map *mapa);
 int 	error(char c);
 int		win(char c);
-void 	checkitem(t_map *copia);
+void	checkitem(t_map *mapa, int y, int x);
 void	extrachecker(t_map *mapa);
+void	posfinder(int *x, int *y, t_map *mapa);
+void	pathcheck(t_map *mapa);
+void	ultimatecheck(t_map *mapa);
+void	print_map(t_map *mapa);
 
 #endif
